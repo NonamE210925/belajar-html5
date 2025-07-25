@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kozume Kenma Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #da3c3c;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: linear-gradient(to right, #ff5f6d, #ffc371);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .nav-links div:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      transition: 0.3s;
+    }
+
+    .search-container {
+      background: white;
+      padding: 5px 15px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input {
+      border: none;
+      outline: none;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .search-container span {
+      color: black;
+      font-size: 16px;
+    }
+
+    .avatar-btn {
+      background: yellow;
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .profile-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 60px 40px;
+      position: relative;
+      background: linear-gradient(135deg, #da3c3c 55%, #ffecd2 55%);
+      min-height: 100vh;
+    }
+
+    .info {
+      flex: 1;
+      min-width: 300px;
+      z-index: 2;
+      animation: slideInLeft 1.2s ease-out;
+    }
+
+    .info h1 {
+      font-size: 60px;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .info-item {
+      margin-bottom: 25px;
+    }
+
+    .info-item h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .info-item p {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+
+    .kenma-img {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .kenma-img img {
+      max-width: 90%;
+      height: auto;
+      filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.4));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideInLeft {
+      0% { transform: translateX(-100px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    .kanji {
+      position: absolute;
+      right: 30px;
+      bottom: 80px;
+      font-size: 36px;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .kenma-instagram-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 20px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .kenma-box img {
+      max-width: 300px;
+      height: auto;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 10px rgba(0,0,0,0.4));
+    }
+
+    .instagram-box img {
+      max-width: 300px;
+      border-radius: 10px;
+      background: black;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #b73232;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .kenma-instagram-container {
+        flex-direction: column-reverse;
+      }
+
+      .instagram-box img, .kenma-box img {
+        max-width: 90%;
+      }
+
+      .search-container {
+        display: none;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        background-color: #ff5f6d;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-toggle" onclick="toggleNav()">
+      <span style="font-size: 24px; cursor: pointer;">&#9776;</span>
+    </div>
+    <div class="nav-links" id="navMenu">
+      <div>Home</div>
+      <div>Abouts</div>
+      <div>Menu</div>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="search..">
+      <span>&#128269;</span>
+    </div>
+    <div class="avatar-btn">
+      <span>&#128100;</span>
+    </div>
+  </header>
+
+  <section class="profile-section">
+    <div class="info">
+      <h1>Kozume Kenma</h1>
+      <div class="info-item">
+        <h2>Weight</h2>
+        <p>58.3 kg</p>
+      </div>
+      <div class="info-item">
+        <h2>Height</h2>
+        <p>170 cm</p>
+      </div>
+      <div class="info-item">
+        <h2>Teams</h2>
+        <p>Nekoma</p>
+      </div>
+      <div class="info-item">
+        <h2>Position</h2>
+        <p>Setter</p>
+      </div>
+    </div>
+
+    <div class="kenma-instagram-container">
+      <div class="kenma-box">
+        <img src="foto/kenma.png" alt="Kenma Image">
+      </div>
+      <div class="instagram-box">
+        <img src="foto/instagram.png" alt="Kenma Instagram Preview">
+      </div>
+    </div>
+
+    <div class="kanji">孤爪砕磨</div>
+  </section>
+
+  <footer>
+    &copy; 2025 Kozume Kenma (aji). All rights reserved.
+  </footer>
+
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById("navMenu");
+      nav.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
